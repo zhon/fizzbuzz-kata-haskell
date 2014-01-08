@@ -36,7 +36,7 @@ QuickCheck Tests are checking properties
 prop_fizzBuzzForOne m = forAll (elements [1]) $ \m -> fizzBuzz m == "1"
 ```
 
-Make it compile
+Make it Compile
 ---------------
 
 Compiler says, "You need a fizzBuzz!"
@@ -72,6 +72,7 @@ We could refactor out the subtle duplication between the test and code. Naw, I j
 
 ```Haskell
 prop_fizzBuzzForPlainNumbers m = forAll (elements [1,2]) $ \m -> fizzBuzz m == show m
+prop_fizzBuzzForPlainNumbers m = forAll (elements [1,2,4]) $ \m -> fizzBuzz m == show m
 ```
 
 ```Haskell
@@ -79,4 +80,43 @@ fizzBuzz :: Int -> String
 fizzBuzz n = show n
 ```
 
+Test for Numbers Divisible by Three
+-----------------------------------
+
+```Haskell
+prop_fizzBuzzForNumbersDivBy3 m = forAll (elements [3,6..12]) $ \m -> fizzBuzz m == "fizz"
+```
+
+Making it pass
+
+```Haskell
+fizzBuzz :: Int -> String
+fizzBuzz n
+  | 0 == n `mod` 3 = "fizz"
+  | otherwise = show n
+```
+
+Test for Numbers Divisible by Five
+----------------------------------
+
+```Haskell
+prop_fizzBuzzForNumbersDivBy5 m = forAll (elements [5,10]) $ \m -> fizzBuzz m == "buzz"
+```
+
+Making it pass
+
+```Haskell
+fizzBuzz :: Int -> String
+fizzBuzz n
+  | 0 == n `mod` 3 = "fizz"
+  | 0 == n `mod` 5 = "buzz"
+  | otherwise = show n
+```
+
+<!--Test for Numbers Divisible by Fifteen-->
+<!----------------------------------------->
+
+<!--```Haskell-->
+<!--prop_fizzBuzzForNumbersDivBy15 m = forAll (elements [15,30,45]) $ \m -> fizzBuzz m == "buzz"-->
+<!--```-->
 
