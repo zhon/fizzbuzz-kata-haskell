@@ -127,10 +127,10 @@ isDivBy :: Int -> Int -> Bool
 isDivBy x n = 0 == n `mod` x
 ```
 
-<!--Test for Numbers Divisible by Fifteen-->
-<!----------------------------------------->
+Test for Numbers Divisible by Fifteen
+-------------------------------------
 
-<!--```Haskell-->
-<!--prop_fizzBuzzForNumbersDivBy15 m = forAll (elements [15,30,45]) $ \m -> fizzBuzz m == "buzz"-->
-<!--```-->
+```Haskell
+prop_fizzBuzzForNumbersDivBy15 m = forAll (elements [15,30,45]) $ \m -> fizzBuzz m == "fizzbuzz"
+```
 
