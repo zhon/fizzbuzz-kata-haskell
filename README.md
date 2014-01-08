@@ -134,3 +134,14 @@ Test for Numbers Divisible by Fifteen
 prop_fizzBuzzForNumbersDivBy15 m = forAll (elements [15,30,45]) $ \m -> fizzBuzz m == "fizzbuzz"
 ```
 
+
+```Haskell
+fizzBuzz :: Int -> String
+fizzBuzz n
+  | isDivBy 15 n = "fizzbuzz"
+  | isDivBy 3  n = "fizz"
+  | isDivBy 5  n = "buzz"
+  | otherwise = show n
+```
+
+Wahoo another Kata finished. It is time for pudding.
