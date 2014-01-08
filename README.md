@@ -33,8 +33,11 @@ import Test.QuickCheck
 QuickCheck Tests are checking properties
 
 ```Haskell
-prop_fizzBuzzForOne m = forAll (choose (1,1)) $ \m -> fizzBuzz m == "1"
+prop_fizzBuzzForOne m = forAll (elements [1]) $ \m -> fizzBuzz m == "1"
 ```
+
+Make it compile
+---------------
 
 Compiler says, "You need a fizzBuzz!"
 
@@ -55,8 +58,10 @@ We can run the test
 *Main> :l FizzBuzz
 *Main> quickCheck prop_fizzBuzzForOne
 ```
-
 Yeah, we have our first failing test!
+
+Make It Pass
+-----------
 
 ```Haskell
 fizzBuzz :: Int -> String
@@ -66,10 +71,12 @@ fizzBuzz 1 = "1"
 We could refactor out the subtle duplication between the test and code. Naw, I just triangulate by expanding my property.
 
 ```Haskell
-prop_fizzBuzzForPlainNumbers m = forAll (choose (1,2)) $ \m -> fizzBuzz m == show m
+prop_fizzBuzzForPlainNumbers m = forAll (elements [1,2]) $ \m -> fizzBuzz m == show m
 ```
 
 ```Haskell
 fizzBuzz :: Int -> String
 fizzBuzz n = show n
 ```
+
+
