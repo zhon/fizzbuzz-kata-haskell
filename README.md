@@ -3,9 +3,9 @@ Fizz Buzz TDD Kata in Haskell
 
 Up and Running
 ------------
-You are familar with counting/dividing game (Fizz Buzz)[http://en.wikipedia.org/wiki/Fizz_buzz].
+You are familar with counting/dividing game [Fizz Buzz](http://en.wikipedia.org/wiki/Fizz_buzz).
 
-You have Haskell (installed)[http://www.haskell.org/platform/]
+You have Haskell [installed](http://www.haskell.org/platform/)
 
 We will be using the GHCi REPL.
 
@@ -111,6 +111,20 @@ fizzBuzz n
   | 0 == n `mod` 3 = "fizz"
   | 0 == n `mod` 5 = "buzz"
   | otherwise = show n
+```
+
+Refactor Away
+-------------
+
+```Haskell
+fizzBuzz :: Int -> String
+fizzBuzz n
+  | isDivBy 3 n = "fizz"
+  | isDivBy 5 n = "buzz"
+  | otherwise = show n
+
+isDivBy :: Int -> Int -> Bool
+isDivBy x n = 0 == n `mod` x
 ```
 
 <!--Test for Numbers Divisible by Fifteen-->
